@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On # Redirect requests to /language/ RewriteCond %{REQUEST_URI}
+  !^/language/ RewriteRule ^(.*)$ /language/$1 [L] RewriteRule ^(.*)$ public/$1
+  [L]
+</IfModule>

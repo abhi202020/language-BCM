@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.one {
+    height: 150px; /* Adjust this height as needed */
+    width: 100%;
+    background-color: rgb(217, 188, 101);
+}
+
+.two {
+    height: 300px; /* Adjust this height as needed */
+    background-color: rgb(40, 171, 123);
+}
+
+.three {
+    height: 200px; /* Adjust this height as needed */
+    background-color: rgb(66, 143, 221);
+}

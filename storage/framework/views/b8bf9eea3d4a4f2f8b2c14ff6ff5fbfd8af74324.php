@@ -1,0 +1,1 @@
+<?php /**PATH C:\xampp\htdocs\language\resources\views/frontend/layouts/partials/browse_courses.blade.php ENDPATH**/ ?>
