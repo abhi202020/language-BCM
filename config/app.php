@@ -181,6 +181,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Jubaer\Zoom\ZoomServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
         // Package Service Providers that aren't auto-discover...
@@ -199,7 +200,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         BC\Laravel\DropboxDriver\ServiceProvider::class,
-        Jubaer\Zoom\ZoomServiceProvider::class,
+
 
         // Application Service Providers...
         App\Providers\AppServiceProvider::class,
@@ -257,7 +258,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Zoom' => Jubaer\Zoom\Facades\Zoom::class,
+     
 
         // Package Aliases
         'Active' => HieuLe\Active\Facades\Active::class,
@@ -267,6 +268,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Zoom' => Jubaer\Zoom\Facades\Zoom::class,
         // 'Messenger' => Gerardojbaez\Messenger\Facades\Messenger::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,

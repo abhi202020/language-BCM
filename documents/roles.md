@@ -1,7 +1,9 @@
+Admin:
+Student:teacher
+
 # About
 
 This file defines roles a person can have whilst interacting with the website and what those roles are able to do.
-
 
 ## visitor
 
@@ -11,7 +13,6 @@ This file defines roles a person can have whilst interacting with the website an
 - view contact, send an email?
 - view courses
 - view bundles
-
 
 ## student
 
@@ -24,7 +25,6 @@ This file defines roles a person can have whilst interacting with the website an
 - message teacher
 - message other students?
 
-
 ## teacher
 
 - message admin
@@ -32,8 +32,7 @@ This file defines roles a person can have whilst interacting with the website an
 - start zoom class
 - view students homework
 
-
-## admin 
+## admin
 
 - add blog
 - add course
@@ -41,11 +40,10 @@ This file defines roles a person can have whilst interacting with the website an
 - change price of course / bundle
 - delete blog
 - delete course
-- delete bundle     
-
+- delete bundle
 
 ## new visitor
 
 - can register and login (info shows up in database)
 - admin can assign this user a role (teacher | student)
-- 
+-

@@ -2,7 +2,7 @@
 @section('title', __('labels.backend.live_lessons.edit').' | '.app_name())
 
 @section('content')
-    {!! Form::model($liveLesson, ['method' => 'PUT', 'route' => ['admin.live-lessons.update', ['live_lesson' => $liveLesson]], 'files' => true,]) !!}
+{!! Form::model($liveLesson, ['method' => 'PUT', 'route' => ['admin.live-lessons.update', $liveLesson], 'files' => true]) !!}
     <div class="card">
         <div class="card-header">
             <h3 class="page-title float-left mb-0">@lang('labels.backend.live_lessons.edit')</h3>

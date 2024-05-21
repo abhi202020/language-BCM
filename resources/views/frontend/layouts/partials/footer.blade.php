@@ -29,7 +29,7 @@
             <div class="info">
                 <div class="left">
                     <div class="siteNavegation">
-                        <h1>Site Navegation</h1>
+                        <h1>Site Navigation</h1>
                         <p><a href="/courses"> Course</a></p>
                         <p><a href="/"> Margie's Magical Words</a></p>
                         <p><a href="/courses"> Pricing</a></p>

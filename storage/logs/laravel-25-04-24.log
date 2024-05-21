@@ -1,0 +1,20 @@
+[25-04-24 21:04:20] local.INFO: -----------------------------------  
+[25-04-24 21:04:20] local.INFO: stripe payment function  
+[25-04-24 21:04:20] local.INFO: Entering stripePayment method for user ID: 3  
+[25-04-24 21:04:25] local.INFO: Stripe payment request sent for user ID: 3  
+[25-04-24 21:04:25] local.INFO: Stripe payment successful for user ID: 3  
+[25-04-24 21:04:25] local.INFO: Cart controller - make order function  
+[25-04-24 21:04:25] local.INFO: Entering makeOrder method for user ID: 3 at: 2024-04-25T21:04  
+[25-04-24 21:04:25] local.ERROR: Error in makeOrder for user ID 3: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY' (SQL: insert into `orders` (`user_id`, `reference_no`, `amount`, `status`, `coupon_id`, `payment_type`, `created_at`, `updated_at`) values (3, gXEnnrE9, 72.92, 1, 0, 3, 2024-04-25T21:04, 2024-04-25T21:04)) at: 2024-04-25T21:04  
+[25-04-24 21:04:25] local.ERROR: Error in stripePayment for user ID 3: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY' (SQL: insert into `orders` (`user_id`, `reference_no`, `amount`, `status`, `coupon_id`, `payment_type`, `created_at`, `updated_at`) values (3, gXEnnrE9, 72.92, 1, 0, 3, 2024-04-25T21:04, 2024-04-25T21:04))  
+[25-04-24 21:04:25] local.INFO: Payment failed. Redirecting with failure message.  
+[25-04-24 21:23:46] local.INFO: -----------------------------------  
+[25-04-24 21:23:46] local.INFO: stripe payment function  
+[25-04-24 21:23:46] local.INFO: Entering stripePayment method for user ID: 3  
+[25-04-24 21:23:48] local.INFO: Stripe payment request sent for user ID: 3  
+[25-04-24 21:23:48] local.INFO: Stripe payment successful for user ID: 3  
+[25-04-24 21:23:48] local.INFO: Cart controller - make order function  
+[25-04-24 21:23:48] local.INFO: Entering makeOrder method for user ID: 3 at: 2024-04-25T21:23  
+[25-04-24 21:23:48] local.ERROR: Error in makeOrder for user ID 3: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY' (SQL: insert into `orders` (`user_id`, `reference_no`, `amount`, `status`, `coupon_id`, `payment_type`, `created_at`, `updated_at`) values (3, 2H4vXAUE, 72.92, 1, 0, 3, 2024-04-25T21:23, 2024-04-25T21:23)) at: 2024-04-25T21:23  
+[25-04-24 21:23:48] local.ERROR: Error in stripePayment for user ID 3: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY' (SQL: insert into `orders` (`user_id`, `reference_no`, `amount`, `status`, `coupon_id`, `payment_type`, `created_at`, `updated_at`) values (3, 2H4vXAUE, 72.92, 1, 0, 3, 2024-04-25T21:23, 2024-04-25T21:23))  
+[25-04-24 21:23:48] local.INFO: Payment failed. Redirecting with failure message.  

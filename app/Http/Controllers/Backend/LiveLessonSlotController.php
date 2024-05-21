@@ -92,58 +92,57 @@ class LiveLessonSlotController extends Controller{
     }
 
     // createZoomMeeting function
-    private function createZoomMeeting($liveLessonSlot) {
-        try {
-            Log::info('createZoomMeeting function');
+   private function createZoomMeeting($liveLessonSlot) {
+    try {
+        Log::info('createZoomMeeting function');
 
-            $timezone = config('app.timezone');
-            $meetingData = [
-                "agenda" => $liveLessonSlot->agenda,
-                "topic" => $liveLessonSlot->topic,
-                "type" => 2, // 2 => scheduled meeting
-                "duration" => $liveLessonSlot->duration,
-                "timezone" => '$timezone',
-                "password" => $liveLessonSlot->password,
-                "start_time" => $liveLessonSlot->start_at,
-                "student_limit" => $liveLessonSlot->student_limit,
-                "settings" => [
-                    'join_before_host' => false,
-                    'host_video' => false,
-                    'participant_video' => false,
-                    'mute_upon_entry' => false,
-                    'waiting_room' => false,
-                    'audio' => 'both',
-                    'auto_recording' => 'none',
-                    'approval_type' => 0,
-                ],
-            ];
+        $timezone = config('app.timezone');
+        $meetingData = [
+            "agenda" => $liveLessonSlot->agenda,
+            "topic" => $liveLessonSlot->topic,
+            "type" => 2, // 2 => scheduled meeting
+            "duration" => $liveLessonSlot->duration,
+            "timezone" => $timezone,
+            "password" => $liveLessonSlot->password,
+            "start_time" => $liveLessonSlot->start_at,
+            "student_limit" => $liveLessonSlot->student_limit,
+            "settings" => [
+                'join_before_host' => false,
+                'host_video' => false,
+                'participant_video' => false,
+                'mute_upon_entry' => false,
+                'waiting_room' => false,
+                'audio' => 'both',
+                'auto_recording' => 'none',
+                'approval_type' => 0,
+            ],
+        ];
+        $zoom = app('Zoom');
+        $zoomMeeting = $zoom::createMeeting($meetingData);
+        // Log the complete response for debugging
+        Log::info('Connected to Zoom API:', ['response' => $zoomMeeting]);
 
-            $zoom = app('Zoom');
-            $zoomMeeting = $zoom::createMeeting($meetingData);
-
-            // Log the complete response for debugging
-            Log::info('Connected to zoom api:', [
-                'response' => $zoomMeeting,
-            ]);
-
-            // Check if the meeting was created successfully
-            if ($zoomMeeting && isset($zoomMeeting['status']) && $zoomMeeting['status']) {
+        // Check if the meeting was created successfully
+        if ($zoomMeeting && isset($zoomMeeting['status']) && $zoomMeeting['status']) {
                 // Get the meeting details
                 $meetingId = $zoomMeeting['data']['id'];
+               
+                $meetingData['meeting_id'] = $zoomMeeting['data']['id'];
                 $meetingData['start_url'] = $zoomMeeting['data']['start_url'];
-                $liveLessonSlot->start_url = $meetingData['start_url'];
+                // $liveLesson->start_url = $meetingData['start_url'];
 
                 Log::info('Meeting ID:', ['id' => $meetingId]);
-
-                return $meetingId;
+                Log::info('Meeting Start URL:', ['start_url' => $meetingData['start_url']]);
+// echo "meetingId".$meetingId;die();
+                return $meetingData;
             }
-            return null;
+        return null;
 
-        } catch (\Exception $e) {
-            Log::error('Error creating Zoom meeting: ' . $e->getMessage());
-            throw $e;
-        }
+    } catch (\Exception $e) {
+        Log::error('Error creating Zoom meeting: ' . $e->getMessage());
+        throw $e;
     }
+}
 
     // store function
     public function store(Request $request) {
@@ -152,9 +151,13 @@ class LiveLessonSlotController extends Controller{
 
         try {
             $liveLessonSlot = $this->saveLiveLessonSlot($request);
-            $meetingId = $this->createZoomMeeting($liveLessonSlot);
+           
+            $meetingData = $this->createZoomMeeting($liveLessonSlot);
+            
+            $meetingId = $meetingData["meeting_id"];
 
             if ($meetingId) {
+            $liveLessonSlot->start_url = $meetingData["start_url"];
                 // Update the LiveLessonSlot with the meeting ID
                 $liveLessonSlot->meeting_id = $meetingId;
 

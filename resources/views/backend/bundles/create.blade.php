@@ -71,14 +71,14 @@
 
                 </div>
                 <div class="col-12 col-lg-4  form-group">
-                   {!! Form::label('start_date', trans('labels.backend.bundles.fields.start_date').' ('.trans('labels.backend.bundles.fields.start_date_format').')', ['class' => 'control-label']) !!}
+                   {!! Form::label('start_date', trans('labels.backend.bundles.fields.start_date'), ['class' => 'control-label']) !!}
 
                     {!! Form::text('start_date', old('start_date'), ['class' => 'form-control date','pattern' => '(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))', 'placeholder' => trans('labels.backend.bundles.fields.start_date').' (Ex . 2019-01-01)', 'autocomplete' => 'off']) !!}
 
                 </div>
                 @if (Auth::user()->isAdmin())
                <div class="col-12 col-lg-4 form-group">
-    {!! Form::label('expire_at', trans('labels.backend.bundles.fields.expire_at').' ('.trans('labels.backend.bundles.fields.date_format').')', ['class' => 'control-label']) !!}
+    {!! Form::label('expire_at', trans('labels.backend.bundles.fields.expire_at'), ['class' => 'control-label']) !!}
     {!! Form::text('expire_at', old('expire_at'), ['class' => 'form-control date', 'pattern' => '(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))', 'placeholder' => trans('labels.backend.bundles.fields.expire_at').' (Ex . 2019-01-01)', 'autocomplete' => 'off']) !!}
 </div>
 

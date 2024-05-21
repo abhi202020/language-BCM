@@ -7,6 +7,7 @@ use App\Models\OauthClient;
 use App\Scopes\AppScope;
 use Illuminate\Database\Eloquent\Model;
 
+
 class AppClient extends Model
 {
 

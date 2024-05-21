@@ -1,0 +1,52 @@
+#BY AbhishekWagle
+If you are beginner to LARAVEL this might be relevant for you
+1)App
+    A) Console
+       a)Kernel.php-->holds custom command,(WE DON'T USE MUCH);
+    B)Exceptions
+       a)Handlers.php-->We can defined handlers when we have exception(WDUM)
+    C)Http
+       a)Controllers-->We make all separate controllers here for eg:api,admin controllers etc
+           1)Controllers.Php-->This is built-in file extending baseController.
+    D)Middleware-->Works as a  Guard,decide to give access to particular route 
+                 We get built in middleware i.e authenticate.php   
+    E)Kernel.PHP -->This is second Kernel.Php file inside App and first one 
+    was in console.This one helps to CONFIGURE CUSTOM made Middleware.  
+    F)Model 
+        a)User.Php -->This model Represents User table from database.
+    G)Providers-->Provide Services,We can find all provider of Packages that we installed.
+
+ 2)Bootsrap--> This is not about css, Meaning of Bootsrap is to make things work quickly, Speed up
+    A)Cache-Cache is store to save time for eg: when we want to go on route, 
+     cache helps to provide data form itself rather than calling internal logic from routing which is efficient
+    B)App.php 
+ 3)Config-->Stores all configuration i.e mail,cache,app,auth configuration. 
+ For example :If we want to configure google in our project ,then the dedicated configuration file should be stored here
+ 4)database
+    A)Migration-handles table, we make table here.
+    B)Factories and Seeders help to execute FAKE data for testing while working related to database.
+ 5)Public
+    A).htaccess 
+    B)index.php-->This is the file that load FIRST.
+    C)robots.txt-->related to search engine optimization file
+  6)Resources
+    We can put Css,Js,Lang
+    View-welcome.php 
+    blade is a template engine
+  7)Routes
+    A)Web.php-->
+    B)Api.php
+    C)Channels.PHP-->Related to broadcasting anything 
+   8)Services
+   9)Storage handles downloadable file or any file you want.
+   10)Test- We can write unit test cases, automation testing
+   11)Vendor- 
+       provides packages or files i.e laravel,google login,paymentgateway packages
+   12).env file
+        setup environtment, name of website, connection details, google configuration passport,
+   13)composer.json  
+      keeps packages information i.e laravel version
+   14)Webpack.js 
+      keeps to workout with external library i.e react 
+   15) Server.php helps to execute app in particular director           
+

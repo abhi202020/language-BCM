@@ -13,33 +13,36 @@ use Illuminate\Support\Facades\DB;
 class ZoomController extends Controller {
 
     public function index() {
-        Log::info('-----------------');
-        Log::info('Zoom Controller - index');
+    Log::info('-----------------');
+    Log::info('Zoom Controller - index');
 
-        $userId = Auth::id();
-        Log::info('User ID: ' . $userId);
+    $userId = Auth::id();
+    Log::info('User ID: ' . $userId);
 
-        // Get all lessons booked by the user
-        $bookedLessons = LessonSlotBooking::with('liveLessonSlot.lesson.course') // Eager loading relationships
-            ->where('user_id', $userId)
-            ->get();
+    // Get all lessons booked by the user
+    $bookedLessons = LessonSlotBooking::with('liveLessonSlot.lesson.course') // Eager loading relationships
+        ->where('user_id', $userId)
+        ->get();
 
-        // Check if the user has any booked lessons
-        if ($bookedLessons->isEmpty()) {
-            Log::info('User has no live lessons booked. Displaying appropriate blade for user type.');
-
-            // Determine if the user is an admin or student and render the appropriate Blade view
-            $isAdmin = Auth::user()->is_admin;
-            return $isAdmin ? view('backend.live-lesson-slots.admin') : view('backend.live-lesson-slots.student');
-        }
-
-        // Log the booked lessons
-        Log::info('Booked lessons: ' . json_encode($bookedLessons));
-
-        // Render the appropriate Blade view based on user type
-        $isAdmin = Auth::user()->is_admin;
-        return $isAdmin ? view('backend.live-lesson-slots.admin', compact('bookedLessons')) : view('backend.live-lesson-slots.student', compact('bookedLessons'));
+    // Log the booked lessons including meeting IDs
+    foreach ($bookedLessons as $lesson) {
+        Log::info('Booked lesson: ' . $lesson->id . ', Meeting ID: ' . $lesson->liveLessonSlot->meeting_id);
     }
+
+    // Check if the user has any booked lessons
+    if ($bookedLessons->isEmpty()) {
+        Log::info('User has no live lessons booked. Displaying appropriate blade for user type.');
+
+        // Determine if the user is an admin or student and render the appropriate Blade view
+        $isAdmin = Auth::user()->is_admin;
+        return $isAdmin ? view('backend.live-lesson-slots.admin') : view('backend.live-lesson-slots.student');
+    }
+
+    // Render the appropriate Blade view based on user type
+    $isAdmin = Auth::user()->is_admin;
+    return $isAdmin ? view('backend.live-lesson-slots.admin', compact('bookedLessons')) : view('backend.live-lesson-slots.student', compact('bookedLessons'));
+}
+
 
     public function cancelLesson($meetingId) {
         Log::info('Canceling Zoom meeting for Meeting ID: ' . $meetingId);

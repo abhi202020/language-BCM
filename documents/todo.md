@@ -1,14 +1,10 @@
 ## todo
 
-- !!! umportant - add functionality that the lesson slot booking dissapears if there are no availble slots letft in the class
-
-
-
+- //!!! umportant - add functionality that the lesson slot booking dissapears if there are no availble slots letft in the class
 
 - do social icons link to socials?
 - create docker image, get it working on work computer
-- 
-
+-
 
 ## small tasks
 
@@ -18,22 +14,17 @@
 - i dont think the pages-manager/footer works, when saving
 - add ability to edit home page
 
+## staging
 
-## staging 
-
-- upload files to hosting service, 
+- upload files to hosting service,
 - test all features
-
-
 
 ## Production
 
 - upload to hosting service
 - no testing needed becuase it happened in staging
 
-
-
-## done 
+## done
 
 - bundle creation
 - show 'your' courses after success

@@ -12,13 +12,17 @@ use Illuminate\Support\Facades\Gate;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Log;
+use Ramsey\Uuid\Uuid;
 
-class OrderController extends Controller{
+class OrderController extends Controller
+{
     /**
      * Display a listing of Orders.
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index()
+    {
         Log::info('Showing orders at: ' . now());
         $orders = Order::get();
         return view('backend.orders.index', compact('orders'));
@@ -26,9 +30,11 @@ class OrderController extends Controller{
 
     /**
      * Display a listing of Orders via ajax DataTable.
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function getData(Request $request){
+    public function getData(Request $request)
+    {
         Log::info('Fetching order data at: ' . now());
         if (request('offline_requests') == 1) {
             $orders = Order::query()->where('payment_type', '=', 3)->orderBy('updated_at', 'desc');
@@ -95,10 +101,12 @@ class OrderController extends Controller{
 
     /**
      * Complete Order manually once payment received.
+     * 
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function complete(Request $request){
+    public function complete(Request $request)
+    {
         Log::info('Completing order at: ' . now());
         $order = Order::findOrfail($request->order);
         $order->status = 1;
@@ -109,7 +117,7 @@ class OrderController extends Controller{
         generateInvoice($order);
 
         foreach ($order->items as $orderItem) {
-            //Bundle Entries
+            // Bundle Entries
             if($orderItem->item_type == Bundle::class){
                foreach ($orderItem->item->courses as $course){
                    $course->students()->attach($order->user_id);
@@ -122,10 +130,12 @@ class OrderController extends Controller{
 
     /**
      * Show Order from storage.
+     * 
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id){
+    public function show($id)
+    {
         Log::info('Showing order details at: ' . now());
         $order = Order::findOrFail($id);
         return view('backend.orders.show', compact('order'));
@@ -133,10 +143,12 @@ class OrderController extends Controller{
 
     /**
      * Remove Order from storage.
+     * 
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function destroy($id)
+    {
         Log::info('Deleting order at: ' . now());
         $order = Order::findOrFail($id);
         $order->items()->delete();
@@ -144,8 +156,14 @@ class OrderController extends Controller{
         return redirect()->route('admin.orders.index')->withFlashSuccess(trans('alerts.backend.general.deleted'));
     }
 
-    // Delete all selected Orders at once.
-    public function massDestroy(Request $request){
+    /**
+     * Delete all selected Orders at once.
+     * 
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function massDestroy(Request $request)
+    {
         Log::info('Deleting multiple orders at: ' . now());
         if (!Gate::allows('course_delete')) {
             return abort(401);
@@ -153,7 +171,7 @@ class OrderController extends Controller{
         if ($request->input('ids')) {
             $entries = Order::whereIn('id', $request->input('ids'))->get();
             foreach ($entries as $entry) {
-                if ($entry->status = 1) {
+                if ($entry->status == 1) {
                     foreach ($entry->items as $item) {
                         $item->course->students()->detach($entry->user_id);
                     }
@@ -162,5 +180,41 @@ class OrderController extends Controller{
                 }
             }
         }
+    }
+
+    /**
+     * Generate order content.
+     * 
+     * @param  Order $order
+     * @return array
+     */
+    private function generateOrderContent($order)
+    {
+        $content = [];
+        $items = [];
+        $counter = 0;
+
+        // Iterate over cart items
+        foreach (Cart::session(auth()->user()->id)->getContent() as $key => $cartItem) {
+            $counter++;
+            // Generate UUID for each item
+            $itemId = Uuid::uuid4()->toString();
+            $items[] = [
+                'id' => $itemId,
+                'number' => $counter,
+                'name' => $cartItem->name,
+                'price' => $cartItem->price,
+            ];
+        }
+
+        // Populate content array
+        $content['items'] = $items;
+        $content['total'] = number_format(Cart::session(auth()->user()->id)->getTotal(), 2);
+        $content['reference_no'] = $order->reference_no;
+
+        // Log the content for debugging
+        \Log::info('Generated Order Content:', $content);
+
+        return $content;
     }
 }

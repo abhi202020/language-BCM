@@ -15523,129 +15523,7 @@
      
 }
 
-        namespace Jubaer\Zoom\Facades { 
-            /**
-     * 
-     *
-     * @see \Jubaer\Zoom\Zoom
-     */ 
-        class Zoom {
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function createMeeting($data)
-        {
-                        /** @var \Jubaer\Zoom\Zoom $instance */
-                        return $instance->createMeeting($data);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function updateMeeting($meetingId, $data)
-        {
-                        /** @var \Jubaer\Zoom\Zoom $instance */
-                        return $instance->updateMeeting($meetingId, $data);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getMeeting($meetingId)
-        {
-                        /** @var \Jubaer\Zoom\Zoom $instance */
-                        return $instance->getMeeting($meetingId);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getAllMeeting()
-        {
-                        /** @var \Jubaer\Zoom\Zoom $instance */
-                        return $instance->getAllMeeting();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getUpcomingMeeting()
-        {
-                        /** @var \Jubaer\Zoom\Zoom $instance */
-                        return $instance->getUpcomingMeeting();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getPreviousMeetings()
-        {
-                        /** @var \Jubaer\Zoom\Zoom $instance */
-                        return $instance->getPreviousMeetings();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function rescheduleMeeting($meetingId, $data)
-        {
-                        /** @var \Jubaer\Zoom\Zoom $instance */
-                        return $instance->rescheduleMeeting($meetingId, $data);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function endMeeting($meetingId)
-        {
-                        /** @var \Jubaer\Zoom\Zoom $instance */
-                        return $instance->endMeeting($meetingId);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function deleteMeeting($meetingId)
-        {
-                        /** @var \Jubaer\Zoom\Zoom $instance */
-                        return $instance->deleteMeeting($meetingId);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function recoverMeeting($meetingId)
-        {
-                        /** @var \Jubaer\Zoom\Zoom $instance */
-                        return $instance->recoverMeeting($meetingId);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getUsers($data)
-        {
-                        /** @var \Jubaer\Zoom\Zoom $instance */
-                        return $instance->getUsers($data);
-        }
-         
-    }
-     
-}
-
-    namespace HieuLe\Active\Facades { 
+        namespace HieuLe\Active\Facades { 
             /**
      * Active facade class
      *
@@ -24157,7 +24035,6 @@ namespace  {
             class URL extends \Illuminate\Support\Facades\URL {}
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
-            class Zoom extends \Jubaer\Zoom\Facades\Zoom {}
             class Active extends \HieuLe\Active\Facades\Active {}
             class Gravatar extends \Creativeorange\Gravatar\Facades\Gravatar {}
             class Socialite extends \Laravel\Socialite\Facades\Socialite {}

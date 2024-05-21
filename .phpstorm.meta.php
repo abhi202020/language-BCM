@@ -64,7 +64,6 @@ namespace PHPSTORM_META {
             'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
             'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
             'Illuminate\Testing\ParallelTesting' => \Illuminate\Testing\ParallelTesting::class,
-            'Laravel\Cashier\Contracts\InvoiceRenderer' => \Laravel\Cashier\Invoices\DompdfInvoiceRenderer::class,
             'Laravel\Passport\ClientRepository' => \Laravel\Passport\ClientRepository::class,
             'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
             'Lcobucci\JWT\Parser' => \Lcobucci\JWT\Token\Parser::class,
@@ -84,7 +83,6 @@ namespace PHPSTORM_META {
             'Spatie\Permission\Contracts\Permission' => \Spatie\Permission\Models\Permission::class,
             'Spatie\Permission\Contracts\Role' => \Spatie\Permission\Models\Role::class,
             'Spatie\Permission\PermissionRegistrar' => \Spatie\Permission\PermissionRegistrar::class,
-            'Stripe\Util\LoggerInterface' => \Laravel\Cashier\Logger::class,
             'Tanmuhittin\LaravelGoogleTranslate\Contracts\ApiTranslatorContract' => \Tanmuhittin\LaravelGoogleTranslate\Api\StichozaApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute::class,
@@ -255,7 +253,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'zoom' => \Jubaer\Zoom\Zoom::class,
         ]));
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
@@ -312,7 +309,6 @@ namespace PHPSTORM_META {
             'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
             'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
             'Illuminate\Testing\ParallelTesting' => \Illuminate\Testing\ParallelTesting::class,
-            'Laravel\Cashier\Contracts\InvoiceRenderer' => \Laravel\Cashier\Invoices\DompdfInvoiceRenderer::class,
             'Laravel\Passport\ClientRepository' => \Laravel\Passport\ClientRepository::class,
             'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
             'Lcobucci\JWT\Parser' => \Lcobucci\JWT\Token\Parser::class,
@@ -332,7 +328,6 @@ namespace PHPSTORM_META {
             'Spatie\Permission\Contracts\Permission' => \Spatie\Permission\Models\Permission::class,
             'Spatie\Permission\Contracts\Role' => \Spatie\Permission\Models\Role::class,
             'Spatie\Permission\PermissionRegistrar' => \Spatie\Permission\PermissionRegistrar::class,
-            'Stripe\Util\LoggerInterface' => \Laravel\Cashier\Logger::class,
             'Tanmuhittin\LaravelGoogleTranslate\Contracts\ApiTranslatorContract' => \Tanmuhittin\LaravelGoogleTranslate\Api\StichozaApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute::class,
@@ -503,7 +498,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'zoom' => \Jubaer\Zoom\Zoom::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::get(0), map([
         '' => '@',
@@ -560,7 +554,6 @@ namespace PHPSTORM_META {
             'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
             'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
             'Illuminate\Testing\ParallelTesting' => \Illuminate\Testing\ParallelTesting::class,
-            'Laravel\Cashier\Contracts\InvoiceRenderer' => \Laravel\Cashier\Invoices\DompdfInvoiceRenderer::class,
             'Laravel\Passport\ClientRepository' => \Laravel\Passport\ClientRepository::class,
             'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
             'Lcobucci\JWT\Parser' => \Lcobucci\JWT\Token\Parser::class,
@@ -580,7 +573,6 @@ namespace PHPSTORM_META {
             'Spatie\Permission\Contracts\Permission' => \Spatie\Permission\Models\Permission::class,
             'Spatie\Permission\Contracts\Role' => \Spatie\Permission\Models\Role::class,
             'Spatie\Permission\PermissionRegistrar' => \Spatie\Permission\PermissionRegistrar::class,
-            'Stripe\Util\LoggerInterface' => \Laravel\Cashier\Logger::class,
             'Tanmuhittin\LaravelGoogleTranslate\Contracts\ApiTranslatorContract' => \Tanmuhittin\LaravelGoogleTranslate\Api\StichozaApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute::class,
@@ -751,7 +743,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'zoom' => \Jubaer\Zoom\Zoom::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
@@ -808,7 +799,6 @@ namespace PHPSTORM_META {
             'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
             'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
             'Illuminate\Testing\ParallelTesting' => \Illuminate\Testing\ParallelTesting::class,
-            'Laravel\Cashier\Contracts\InvoiceRenderer' => \Laravel\Cashier\Invoices\DompdfInvoiceRenderer::class,
             'Laravel\Passport\ClientRepository' => \Laravel\Passport\ClientRepository::class,
             'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
             'Lcobucci\JWT\Parser' => \Lcobucci\JWT\Token\Parser::class,
@@ -828,7 +818,6 @@ namespace PHPSTORM_META {
             'Spatie\Permission\Contracts\Permission' => \Spatie\Permission\Models\Permission::class,
             'Spatie\Permission\Contracts\Role' => \Spatie\Permission\Models\Role::class,
             'Spatie\Permission\PermissionRegistrar' => \Spatie\Permission\PermissionRegistrar::class,
-            'Stripe\Util\LoggerInterface' => \Laravel\Cashier\Logger::class,
             'Tanmuhittin\LaravelGoogleTranslate\Contracts\ApiTranslatorContract' => \Tanmuhittin\LaravelGoogleTranslate\Api\StichozaApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute::class,
@@ -999,7 +988,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'zoom' => \Jubaer\Zoom\Zoom::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
@@ -1056,7 +1044,6 @@ namespace PHPSTORM_META {
             'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
             'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
             'Illuminate\Testing\ParallelTesting' => \Illuminate\Testing\ParallelTesting::class,
-            'Laravel\Cashier\Contracts\InvoiceRenderer' => \Laravel\Cashier\Invoices\DompdfInvoiceRenderer::class,
             'Laravel\Passport\ClientRepository' => \Laravel\Passport\ClientRepository::class,
             'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
             'Lcobucci\JWT\Parser' => \Lcobucci\JWT\Token\Parser::class,
@@ -1076,7 +1063,6 @@ namespace PHPSTORM_META {
             'Spatie\Permission\Contracts\Permission' => \Spatie\Permission\Models\Permission::class,
             'Spatie\Permission\Contracts\Role' => \Spatie\Permission\Models\Role::class,
             'Spatie\Permission\PermissionRegistrar' => \Spatie\Permission\PermissionRegistrar::class,
-            'Stripe\Util\LoggerInterface' => \Laravel\Cashier\Logger::class,
             'Tanmuhittin\LaravelGoogleTranslate\Contracts\ApiTranslatorContract' => \Tanmuhittin\LaravelGoogleTranslate\Api\StichozaApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute::class,
@@ -1247,7 +1233,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'zoom' => \Jubaer\Zoom\Zoom::class,
         ]));
     override(\App::get(0), map([
         '' => '@',
@@ -1304,7 +1289,6 @@ namespace PHPSTORM_META {
             'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
             'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
             'Illuminate\Testing\ParallelTesting' => \Illuminate\Testing\ParallelTesting::class,
-            'Laravel\Cashier\Contracts\InvoiceRenderer' => \Laravel\Cashier\Invoices\DompdfInvoiceRenderer::class,
             'Laravel\Passport\ClientRepository' => \Laravel\Passport\ClientRepository::class,
             'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
             'Lcobucci\JWT\Parser' => \Lcobucci\JWT\Token\Parser::class,
@@ -1324,7 +1308,6 @@ namespace PHPSTORM_META {
             'Spatie\Permission\Contracts\Permission' => \Spatie\Permission\Models\Permission::class,
             'Spatie\Permission\Contracts\Role' => \Spatie\Permission\Models\Role::class,
             'Spatie\Permission\PermissionRegistrar' => \Spatie\Permission\PermissionRegistrar::class,
-            'Stripe\Util\LoggerInterface' => \Laravel\Cashier\Logger::class,
             'Tanmuhittin\LaravelGoogleTranslate\Contracts\ApiTranslatorContract' => \Tanmuhittin\LaravelGoogleTranslate\Api\StichozaApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute::class,
@@ -1495,7 +1478,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'zoom' => \Jubaer\Zoom\Zoom::class,
         ]));
     override(\App::make(0), map([
         '' => '@',
@@ -1552,7 +1534,6 @@ namespace PHPSTORM_META {
             'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
             'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
             'Illuminate\Testing\ParallelTesting' => \Illuminate\Testing\ParallelTesting::class,
-            'Laravel\Cashier\Contracts\InvoiceRenderer' => \Laravel\Cashier\Invoices\DompdfInvoiceRenderer::class,
             'Laravel\Passport\ClientRepository' => \Laravel\Passport\ClientRepository::class,
             'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
             'Lcobucci\JWT\Parser' => \Lcobucci\JWT\Token\Parser::class,
@@ -1572,7 +1553,6 @@ namespace PHPSTORM_META {
             'Spatie\Permission\Contracts\Permission' => \Spatie\Permission\Models\Permission::class,
             'Spatie\Permission\Contracts\Role' => \Spatie\Permission\Models\Role::class,
             'Spatie\Permission\PermissionRegistrar' => \Spatie\Permission\PermissionRegistrar::class,
-            'Stripe\Util\LoggerInterface' => \Laravel\Cashier\Logger::class,
             'Tanmuhittin\LaravelGoogleTranslate\Contracts\ApiTranslatorContract' => \Tanmuhittin\LaravelGoogleTranslate\Api\StichozaApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute::class,
@@ -1743,7 +1723,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'zoom' => \Jubaer\Zoom\Zoom::class,
         ]));
     override(\App::makeWith(0), map([
         '' => '@',
@@ -1800,7 +1779,6 @@ namespace PHPSTORM_META {
             'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
             'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
             'Illuminate\Testing\ParallelTesting' => \Illuminate\Testing\ParallelTesting::class,
-            'Laravel\Cashier\Contracts\InvoiceRenderer' => \Laravel\Cashier\Invoices\DompdfInvoiceRenderer::class,
             'Laravel\Passport\ClientRepository' => \Laravel\Passport\ClientRepository::class,
             'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
             'Lcobucci\JWT\Parser' => \Lcobucci\JWT\Token\Parser::class,
@@ -1820,7 +1798,6 @@ namespace PHPSTORM_META {
             'Spatie\Permission\Contracts\Permission' => \Spatie\Permission\Models\Permission::class,
             'Spatie\Permission\Contracts\Role' => \Spatie\Permission\Models\Role::class,
             'Spatie\Permission\PermissionRegistrar' => \Spatie\Permission\PermissionRegistrar::class,
-            'Stripe\Util\LoggerInterface' => \Laravel\Cashier\Logger::class,
             'Tanmuhittin\LaravelGoogleTranslate\Contracts\ApiTranslatorContract' => \Tanmuhittin\LaravelGoogleTranslate\Api\StichozaApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute::class,
@@ -1991,7 +1968,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'zoom' => \Jubaer\Zoom\Zoom::class,
         ]));
     override(\app(0), map([
         '' => '@',
@@ -2048,7 +2024,6 @@ namespace PHPSTORM_META {
             'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
             'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
             'Illuminate\Testing\ParallelTesting' => \Illuminate\Testing\ParallelTesting::class,
-            'Laravel\Cashier\Contracts\InvoiceRenderer' => \Laravel\Cashier\Invoices\DompdfInvoiceRenderer::class,
             'Laravel\Passport\ClientRepository' => \Laravel\Passport\ClientRepository::class,
             'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
             'Lcobucci\JWT\Parser' => \Lcobucci\JWT\Token\Parser::class,
@@ -2068,7 +2043,6 @@ namespace PHPSTORM_META {
             'Spatie\Permission\Contracts\Permission' => \Spatie\Permission\Models\Permission::class,
             'Spatie\Permission\Contracts\Role' => \Spatie\Permission\Models\Role::class,
             'Spatie\Permission\PermissionRegistrar' => \Spatie\Permission\PermissionRegistrar::class,
-            'Stripe\Util\LoggerInterface' => \Laravel\Cashier\Logger::class,
             'Tanmuhittin\LaravelGoogleTranslate\Contracts\ApiTranslatorContract' => \Tanmuhittin\LaravelGoogleTranslate\Api\StichozaApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute::class,
@@ -2239,7 +2213,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'zoom' => \Jubaer\Zoom\Zoom::class,
         ]));
     override(\resolve(0), map([
         '' => '@',
@@ -2296,7 +2269,6 @@ namespace PHPSTORM_META {
             'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
             'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
             'Illuminate\Testing\ParallelTesting' => \Illuminate\Testing\ParallelTesting::class,
-            'Laravel\Cashier\Contracts\InvoiceRenderer' => \Laravel\Cashier\Invoices\DompdfInvoiceRenderer::class,
             'Laravel\Passport\ClientRepository' => \Laravel\Passport\ClientRepository::class,
             'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
             'Lcobucci\JWT\Parser' => \Lcobucci\JWT\Token\Parser::class,
@@ -2316,7 +2288,6 @@ namespace PHPSTORM_META {
             'Spatie\Permission\Contracts\Permission' => \Spatie\Permission\Models\Permission::class,
             'Spatie\Permission\Contracts\Role' => \Spatie\Permission\Models\Role::class,
             'Spatie\Permission\PermissionRegistrar' => \Spatie\Permission\PermissionRegistrar::class,
-            'Stripe\Util\LoggerInterface' => \Laravel\Cashier\Logger::class,
             'Tanmuhittin\LaravelGoogleTranslate\Contracts\ApiTranslatorContract' => \Tanmuhittin\LaravelGoogleTranslate\Api\StichozaApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute::class,
@@ -2487,7 +2458,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'zoom' => \Jubaer\Zoom\Zoom::class,
         ]));
     override(\Psr\Container\ContainerInterface::get(0), map([
         '' => '@',
@@ -2544,7 +2514,6 @@ namespace PHPSTORM_META {
             'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
             'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
             'Illuminate\Testing\ParallelTesting' => \Illuminate\Testing\ParallelTesting::class,
-            'Laravel\Cashier\Contracts\InvoiceRenderer' => \Laravel\Cashier\Invoices\DompdfInvoiceRenderer::class,
             'Laravel\Passport\ClientRepository' => \Laravel\Passport\ClientRepository::class,
             'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
             'Lcobucci\JWT\Parser' => \Lcobucci\JWT\Token\Parser::class,
@@ -2564,7 +2533,6 @@ namespace PHPSTORM_META {
             'Spatie\Permission\Contracts\Permission' => \Spatie\Permission\Models\Permission::class,
             'Spatie\Permission\Contracts\Role' => \Spatie\Permission\Models\Role::class,
             'Spatie\Permission\PermissionRegistrar' => \Spatie\Permission\PermissionRegistrar::class,
-            'Stripe\Util\LoggerInterface' => \Laravel\Cashier\Logger::class,
             'Tanmuhittin\LaravelGoogleTranslate\Contracts\ApiTranslatorContract' => \Tanmuhittin\LaravelGoogleTranslate\Api\StichozaApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate::class,
             'Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute' => \Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslateWithAttribute::class,
@@ -2735,7 +2703,6 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
-            'zoom' => \Jubaer\Zoom\Zoom::class,
         ]));
 
 
