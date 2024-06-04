@@ -22,11 +22,18 @@ class ReasonController extends Controller
      */
     public function index()
     {
+    
         if (!Gate::allows('reason_access')) {
             return abort(401);
         }
 
-        return view('backend.reasons.index');
+        // Fetching a default reason ID for demonstration purposes
+        $defaultReasonId = 1; // You should replace this with your actual logic
+        
+        // Pass $id to the view
+        return view('backend.reasons.index', [
+            'id' => $defaultReasonId,
+        ]);
     }
 
     /**
@@ -228,6 +235,7 @@ class ReasonController extends Controller
             }
         }
     }
+    
 
 
     public function status($id)

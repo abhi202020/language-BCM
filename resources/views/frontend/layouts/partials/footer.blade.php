@@ -28,26 +28,26 @@
             </div>
             <div class="info">
                 <div class="left">
-                    <div class="siteNavegation">
+                    <div class="siteNavegation" style="margin-left:30px;">
                         <h1>Site Navigation</h1>
                         <p><a href="/courses"> Course</a></p>
-                        <p><a href="/"> Margie's Magical Words</a></p>
+                        <p><a href="/"> Magical Verbs</a></p>
                         <p><a href="/courses"> Pricing</a></p>
                         <p><a href="/blog"> Blogs</a></p>
                     </div>
-                    <div class="custumerService">
+                    <div class="custumerService" style="margin-left:30px;">
                         <h1>Customer Service</h1>
                         <p><a href="/contact">Contact us</a></p>
                         <p><a href="/privacy-policy">Privacy Policy</a></p>
                         <p><a href="/terms-and-conditions">Terms & Conditions</a></p>
                     </div>
-                    <div class="companyInformation">
+                    <div class="companyInformation" style="margin-left:30px;">
                         <h1>Company Information</h1>
                         <p><a href="/courses"> About Margie</a></p>
                         <p><a href="/courses"> Courses</a></p>
                         <p><a href="/bundles"> Bundles</a></p>
                     </div>
-                    <div class="yourAccount">
+                    <div class="yourAccount" style="margin-left:30px;">
                         <h1>Your Account</h1>
                         <p><a href="/login"> Sign In</a></p>
                         <p style="font-weight: bold;"><a href="/login"> My account</a></p>

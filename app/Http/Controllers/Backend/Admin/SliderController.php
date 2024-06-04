@@ -15,10 +15,12 @@ class SliderController extends Controller{
      * Display a listing of the resource.
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        $slides_list = Slider::OrderBy('sequence','asc')->get();
-        return view('backend.slider.index', compact('slides_list'));
-    }
+  public function index()
+{
+    $slides_list = Slider::OrderBy('sequence', 'asc')->get();
+    return view('backend.slider.index', compact('slides_list'));
+}
+
 
     /**
      * Show the form for creating a new resource.

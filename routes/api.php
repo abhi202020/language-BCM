@@ -108,5 +108,6 @@ Route::group(['prefix' => 'v1','namespace'=>'v1'],function (){
     });
     Route::post('send-reset-link','ApiController');
     Route::post('configs','ApiController@getConfigs');
+    
 });
 

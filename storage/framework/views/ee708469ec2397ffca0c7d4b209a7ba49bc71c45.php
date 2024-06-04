@@ -136,8 +136,7 @@
             var id = $(this).data('id');
             $.ajax({
                 type: "POST",
-                url: "<?php echo e(route('admin.reasons.status')); ?>",
-                data: {
+url: "<?php echo e(route('admin.reasons.status', ['id' => $id])); ?>", // Passing the id parameter here                data: {
                     _token:'<?php echo e(csrf_token()); ?>',
                     id: id,
                 },

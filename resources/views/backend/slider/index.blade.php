@@ -223,19 +223,24 @@
             });
         })
 
-        $(document).on('click', '.switch-input', function (e) {
-            var id = $(this).data('id');
-            $.ajax({
-                type: "POST",
-                url: "{{ route('admin.sliders.status') }}",
-                data: {
-                    _token:'{{ csrf_token() }}',
-                    id: id,
-                },
-            }).done(function() {
-                location.reload();
-            });
-        })
+       $(document).on('click', '.switch-input', function (e) {
+    var id = $(this).data('id');
+    var sliderId = id; // Assuming the slider ID is the same as the data ID
+    $.ajax({
+        type: "POST",
+        url: "{{ route('admin.sliders.status', ['id' => ':id']) }}".replace(':id', id), // Update the route with the id parameter
+        data: {
+            _token: '{{ csrf_token() }}',
+            id: id,
+            slider_id: sliderId,
+        },
+    }).done(function() {
+        location.reload();
+    });
+})
+
+
+
     </script>
 @endpush
 
