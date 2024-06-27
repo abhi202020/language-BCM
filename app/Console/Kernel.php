@@ -35,7 +35,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-
+$schedule->command('backup:run')->daily();
         if (config('backup_schedule') == 1) {
             $schedule->command(Backup::class)->daily();
 
@@ -69,4 +69,5 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+    
 }

@@ -17473,6 +17473,128 @@
      
 }
 
+    namespace Jubaer\Zoom\Facades { 
+            /**
+     * 
+     *
+     * @see \Jubaer\Zoom\Zoom
+     */ 
+        class Zoom {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function createMeeting($data)
+        {
+                        /** @var \Jubaer\Zoom\Zoom $instance */
+                        return $instance->createMeeting($data);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function updateMeeting($meetingId, $data)
+        {
+                        /** @var \Jubaer\Zoom\Zoom $instance */
+                        return $instance->updateMeeting($meetingId, $data);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getMeeting($meetingId)
+        {
+                        /** @var \Jubaer\Zoom\Zoom $instance */
+                        return $instance->getMeeting($meetingId);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getAllMeeting()
+        {
+                        /** @var \Jubaer\Zoom\Zoom $instance */
+                        return $instance->getAllMeeting();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getUpcomingMeeting()
+        {
+                        /** @var \Jubaer\Zoom\Zoom $instance */
+                        return $instance->getUpcomingMeeting();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getPreviousMeetings()
+        {
+                        /** @var \Jubaer\Zoom\Zoom $instance */
+                        return $instance->getPreviousMeetings();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function rescheduleMeeting($meetingId, $data)
+        {
+                        /** @var \Jubaer\Zoom\Zoom $instance */
+                        return $instance->rescheduleMeeting($meetingId, $data);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function endMeeting($meetingId)
+        {
+                        /** @var \Jubaer\Zoom\Zoom $instance */
+                        return $instance->endMeeting($meetingId);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function deleteMeeting($meetingId)
+        {
+                        /** @var \Jubaer\Zoom\Zoom $instance */
+                        return $instance->deleteMeeting($meetingId);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function recoverMeeting($meetingId)
+        {
+                        /** @var \Jubaer\Zoom\Zoom $instance */
+                        return $instance->recoverMeeting($meetingId);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getUsers($data)
+        {
+                        /** @var \Jubaer\Zoom\Zoom $instance */
+                        return $instance->getUsers($data);
+        }
+         
+    }
+     
+}
+
     namespace Jenssegers\Agent\Facades { 
             /**
      * 
@@ -24042,6 +24164,7 @@ namespace  {
             class Html extends \Spatie\Html\Facades\Html {}
             class Image extends \Intervention\Image\Facades\Image {}
             class Excel extends \Maatwebsite\Excel\Facades\Excel {}
+            class Zoom extends \Jubaer\Zoom\Facades\Zoom {}
             class Agent extends \Jenssegers\Agent\Facades\Agent {}
             class Cart extends \Darryldecode\Cart\Facades\CartFacade {}
             class Menu extends \Harimayco\Menu\Facades\Menu {}

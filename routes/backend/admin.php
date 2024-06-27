@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Auth\User\AccountController;
+use App\Http\Controllers\Backend\Admin\TaxController;
 use App\Http\Controllers\Backend\Auth\User\ProfileController;
 use \App\Http\Controllers\Backend\Auth\User\UpdatePasswordController;
 use \App\Http\Controllers\Backend\Auth\User\UserPasswordController;
 use Illuminate\Support\Facades\Route;
+
 
 
 /*
@@ -94,10 +96,12 @@ Route::post('admin/testimonials/status', 'Admin\TestimonialController@updateStat
     Route::get('get-contact-requests-data', ['uses' => 'ContactController@getData', 'as' => 'contact_requests.get_data']);
 
 
-    //====== Tax Routes =====//
-    Route::resource('tax', 'Admin\TaxController');
-Route::get('tax/status/{id}', 'Admin\TaxController@status')->name('tax.status');
-Route::post('tax/status', 'Admin\TaxController@updateStatus')->name('tax.update_status');
+
+//====== Tax Routes =====Syntax change//
+Route::resource('tax', TaxController::class);
+Route::get('tax/status/{id}', [TaxController::class, 'status'])->name('tax.status');
+Route::post('tax/status', [TaxController::class, 'updateStatus'])->name('tax.update_status');
+
 
 
 
@@ -284,18 +288,20 @@ Route::get('/email-confirmation/download/{order}', 'CartController@downloadEmail
 
 
 //======= Blog Routes =====//
-Route::group(['prefix' => 'blog'], function () {
-    Route::get('/create', 'Admin\BlogController@create');
-    Route::post('/create', 'Admin\BlogController@store');
-    Route::get('delete/{id}', 'Admin\BlogController@destroy')->name('blogs.delete');
-    Route::get('edit/{id}', 'Admin\BlogController@edit')->name('blogs.edit'); // Changed the name here
-    Route::post('edit/{id}', 'Admin\BlogController@update');
-    Route::get('view/{id}', 'Admin\BlogController@show');
-    Route::post('{id}/storecomment', 'Admin\BlogController@storeComment')->name('storeComment');
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
+    Route::get('blog/create', 'BlogController@create')->name('blogs.create');
+    Route::post('blog/create', 'BlogController@store')->name('blogs.store');
+    Route::get('blog/edit/{id}', 'BlogController@edit')->name('blogs.edit');
+    Route::post('blog/edit/{id}', 'BlogController@update')->name('blogs.update');
+    Route::get('blog/delete/{id}', 'BlogController@destroy')->name('blogs.delete');
+    Route::get('blog/view/{id}', 'BlogController@show')->name('blogs.show');
+    Route::post('blog/{id}/storecomment', 'BlogController@storeComment')->name('blogs.storeComment');
+    Route::resource('blogs', 'Admin\BlogController');
+    
+    Route::get('get-blogs-data', 'BlogController@getData')->name('blogs.get_data');
+    Route::post('blogs_mass_destroy', 'BlogController@massDestroy')->name('blogs.mass_destroy');
 });
-Route::resource('blogs', 'Admin\BlogController')->except(['edit']); // Excluded the 'edit' route from resource
-Route::get('get-blogs-data', ['uses' => 'Admin\BlogController@getData', 'as' => 'blogs.get_data']);
-Route::post('blogs_mass_destroy', ['uses' => 'Admin\BlogController@massDestroy', 'as' => 'blogs.mass_destroy']);
+
 
 
 

@@ -38,69 +38,62 @@ class BlogController extends Controller{
      * Display a listing of Lessons via ajax DataTable.
      * @return \Illuminate\Http\Response
      */
-    public function getData(Request $request) {
-        $has_view = false;
-        $has_delete = false;
-        $has_edit = false;
-        $blogs = "";
-        $blogs = Blog::query()->whereHas('category')->orderBy('created_at', 'desc');
+    public function getData(Request $request)
+{
+    $has_view = auth()->user()->can('blog_view');
+    $has_edit = auth()->user()->can('blog_edit');
+    $has_delete = auth()->user()->can('blog_delete');
 
-        if (auth()->user()->can('blog_view')) {
-            $has_view = true;
-        }
-        if (auth()->user()->can('blog_edit')) {
-            $has_edit = true;
-        }
-        if (auth()->user()->can('blog_delete')) {
-            $has_delete = true;
-        }
+    $blogs = Blog::with('category')->orderBy('created_at', 'desc');
 
-        return DataTables::of($blogs)
-            ->addIndexColumn()
-            ->addColumn('actions', function ($q) use ($has_view, $has_edit, $has_delete, $request) {
-                $view = "";
-                $edit = "";
-                $delete = "";
-                if ($request->show_deleted == 1) {
-                    return view('backend.datatable.action-trashed')->with(['route_label' => 'admin.blogs', 'label' => 'blog', 'value' => $q->id]);
-                }
+    return DataTables::of($blogs)
+        ->addIndexColumn()
+        ->addColumn('actions', function ($q) use ($has_view, $has_edit, $has_delete, $request) {
+            $view = "";
+            $edit = "";
+            $delete = "";
 
-                if ($has_view) {
-                    $view = view('backend.datatable.action-view')
-                        ->with(['route' => route('admin.blogs.show', ['blog' => $q->id])])->render();
-                }
+            if ($request->show_deleted == 1) {
+                return view('backend.datatable.action-trashed')->with(['route_label' => 'admin.blogs', 'label' => 'blog', 'value' => $q->id]);
+            }
 
-                if ($has_edit) {
-                    $edit = view('backend.datatable.action-edit')
-                        ->with(['route' => route('admin.blogs.edit', ['blog' => $q->id])])
-                        ->render();
-                    $view .= $edit;
-                }
+            if ($has_view) {
+                $view = view('backend.datatable.action-view')
+                    ->with(['route' => route('admin.blogs.show', ['blog' => $q->id])])->render();
+            }
 
-                if ($has_delete) {
-                    $delete = view('backend.datatable.action-delete')
-                        ->with(['route' => route('admin.blogs.destroy', ['blog' => $q->id])])
-                        ->render();
-                    $view .= $delete;
-                }
-                return $view;
+            if ($has_edit) {
+                $edit = view('backend.datatable.action-edit')
+                    ->with(['route' => route('admin.blogs.edit', ['blog' => $q->id])])
+                    ->render();
+                $view .= $edit;
+            }
 
-            })
-            ->editColumn('course', function ($q) {
-                return ($q->course) ? $q->course->title : 'N/A';
-            })
-            ->editColumn('image', function ($q) {
-                return ($q->image != null) ? '<img height="50px" src="' . asset('storage/uploads/' . $q->image) . '">' : 'N/A';
-            })
-            ->addColumn('created', function ($q) {
-                return $q->created_at->diffforhumans();
-            })
-            ->addColumn('category', function ($q) {
-                return $q->category->name;
-            })
-            ->rawColumns(['image', 'actions'])
-            ->make();
-    }
+            if ($has_delete) {
+                $delete = view('backend.datatable.action-delete')
+                    ->with(['route' => route('admin.blogs.destroy', ['blog' => $q->id])])
+                    ->render();
+                $view .= $delete;
+            }
+
+            return $view;
+        })
+        ->editColumn('course', function ($q) {
+            return $q->course ? $q->course->title : 'N/A';
+        })
+        ->editColumn('image', function ($q) {
+            return $q->image ? '<img height="50px" src="' . asset('storage/uploads/' . $q->image) . '">' : 'N/A';
+        })
+        ->addColumn('created', function ($q) {
+            return $q->created_at->diffForHumans();
+        })
+        ->addColumn('category', function ($q) {
+            return $q->category->name;
+        })
+        ->rawColumns(['image', 'actions'])
+        ->make(true);
+}
+
 
     /**
      * Show the form for creating a new resource.
