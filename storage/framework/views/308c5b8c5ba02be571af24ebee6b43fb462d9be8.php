@@ -1,0 +1,1 @@
+<?php /**PATH C:\xampp\htdocs\language\resources\views\frontend\auth\registerTeacher.blade.php ENDPATH**/ ?>

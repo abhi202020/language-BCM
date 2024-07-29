@@ -64,5 +64,13 @@
                 @endif
             </div>
         </div>
+        
+
+<a href="http://localhost:8000/courses">
+    <button class="nws-button text-center gradient-bg text-uppercase" type="button" style="margin-left:720px; color:white;">
+        BUY COURSES <i class="fas fa-caret-right"></i>
+    </button>
+</a>
+    </a>                
     </section>
 @endsection

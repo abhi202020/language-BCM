@@ -24,15 +24,13 @@
             color: #333333;
             background-color: white;
             border: none;
-
         }
-     .listing-filter-form select{
-            height:50px!important;
+        .listing-filter-form select {
+            height: 50px !important;
         }
 
         ul.pagination {
-            display: inline;
-            text-align: center;
+            display: none; /* Hide the default pagination */
         }
     </style>
 <?php $__env->stopPush(); ?>
@@ -93,19 +91,18 @@
                     <!-- course list -->
                     <div class="genius-post-item">
                         <div class="tab-container">
-
+<p>Choose your courses</p>
                             <!-- grid view -->
                             <div id="tab1" class="tab-content-1 pt35">
                                 <div class="best-course-area best-course-v2">
-                                    <div class="row">
+                                    <div class="row" id="course-list">
                                         <?php if($courses->count() > 0): ?>
-                                            <?php $__currentLoopData = $courses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <div class="col-md-4">
-                                                    
-                                                        <div class="best-course-pic-text relative-position">
+                                            <?php $__currentLoopData = $courses->take(3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <div class="col-md-4 course-item">
+                                                    <div class="best-course-pic-text relative-position">
                                                         <a href="<?php echo e(route('courses.show', [$course->slug])); ?>" class="card-link">
                                                             <div class="best-course-pic relative-position"
-                                                                <?php if($course->course_image != ""): ?> style="background-image: url('<?php echo e(asset('storage/uploads/'.$course->course_image)); ?>')" <?php endif; ?>></a>
+                                                                 <?php if($course->course_image != ""): ?> style="background-image: url('<?php echo e(asset('storage/uploads/'.$course->course_image)); ?>')" <?php endif; ?>></a>
                                                                 <?php if($course->trending == 1): ?>
                                                                     <div class="trend-badge-2 text-center text-uppercase">
                                                                         <i class="fas fa-bolt"></i>
@@ -178,16 +175,24 @@
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php else: ?>
                                             <h3><?php echo app('translator')->get('labels.general.no_data_available'); ?></h3>
-                                    <?php endif; ?>
-
-                                    <!-- /course -->
+                                        <?php endif; ?>
                                     </div>
+
+                                    <!-- See More Button -->
+                                    <?php if($courses->hasMorePages()): ?>
+                                        <div class="see-more-btn text-center mt-4">
+                                            <button class="genius-btn gradient-bg text-center text-uppercase btn-block text-white font-weight-bold" id="load-more" value="see more">
+                                                
+                                                <i class="fas fa-caret-right"></i>
+                                            </button>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
 
                             <!-- list view -->
                             <div id="tab2" class="tab-content-1">
-                                <div class="course-list-view">
+                                <div class="course-list-view col-md-3">
                                     <table>
                                         <tr class="list-head">
                                             <th><?php echo app('translator')->get('labels.frontend.course.course_name'); ?></th>
@@ -195,13 +200,14 @@
                                             <th><?php echo app('translator')->get('labels.frontend.course.starts'); ?></th>
                                         </tr>
                                         <?php if($courses->count() > 0): ?>
-                                            <?php $__currentLoopData = $courses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <tr>
+                                            <?php $__currentLoopData = $courses->take(3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <tr class="course-item">
                                                     <td>
                                                         <div class="course-list-img-text">
 
-                                                        <a href="<?php echo e(route('courses.show', [$course->slug])); ?>" class="card-link"><div class="course-list-img" 
-                                                            <?php if($course->course_image != ""): ?> style="background-image: url(<?php echo e(asset('storage/uploads/'.$course->course_image)); ?>)" <?php endif; ?> >
+                                                        <a href="<?php echo e(route('courses.show', [$course->slug])); ?>" class="card-link">
+                                                            <div class="course-list-img"
+                                                                 <?php if($course->course_image != ""): ?> style="background-image: url(<?php echo e(asset('storage/uploads/'.$course->course_image)); ?>)" <?php endif; ?>>
                                                             </div></a>
 
                                                             <div class="course-list-text">
@@ -215,7 +221,8 @@
                                                                                 <?php echo e(trans('labels.backend.courses.fields.free')); ?>
 
                                                                             <?php else: ?>
-                                                                                <?php echo $course->strikePrice; ?> 
+                                                                                <?php echo $course->strikePrice; ?>
+
                                                                                 <?php echo e($appCurrency['symbol'].$course->price); ?>
 
                                                                             <?php endif; ?>
@@ -254,13 +261,22 @@
                                             </tr>
                                         <?php endif; ?>
                                     </table>
+                                    <!-- See More Button for List View -->
+                                    <?php if($courses->hasMorePages()): ?>
+                                        <div class="see-more-btn text-center mt-4">
+                                            <button class="genius-btn gradient-bg text-center text-uppercase btn-block text-white font-weight-bold" id="load-more-list" type="submit" value="see more">
+                                                <?php echo app('translator')->get('labels.frontend.course.see_more'); ?>
+                                                <i class="fas fa-caret-right"></i>
+                                            </button>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
 
                         </div>
 
-                        <!-- pagination -->
-                        <div class="couse-pagination text-center ul-li">
+                        <!-- pagination (hidden) -->
+                        <div class="course-pagination text-center ul-li">
                             <?php echo e($courses->links()); ?>
 
                         </div>
@@ -274,7 +290,7 @@
                             <h2 class="widget-title text-capitalize"><?php echo app('translator')->get('labels.frontend.course.find_your_course'); ?></h2>
                             <div class="listing-filter-form pb30">
                                 <form action="<?php echo e(route('search-course')); ?>" method="get">
-                                    <!-- select cateogry -->
+                                    <!-- select category -->
                                     <div class="filter-search mb20">
                                         <label class="text-uppercase"><?php echo app('translator')->get('labels.frontend.course.category'); ?></label>
                                         <select name="category" class="form-control listing-filter-form select">
@@ -385,16 +401,55 @@
 <?php $__env->startPush('after-scripts'); ?>
     <script>
         $(document).ready(function () {
+            let page = 1;
+            let isLoading = false;
+
+            function loadMoreCourses() {
+                if (isLoading) return;
+                isLoading = true;
+                page++;
+
+                $.ajax({
+                    url: '<?php echo e(url()->current()); ?>',
+                    type: 'GET',
+                    data: {
+                        page: page,
+                        type: $('#sortBy').val()
+                    },
+                    success: function (response) {
+                        const newCourses = $(response).find('.course-item');
+                        if (newCourses.length) {
+                            $('#course-list').append(newCourses);
+                            isLoading = false;
+                        } else {
+                            $('#load-more').hide();
+                            $('#load-more-list').hide();
+                        }
+                    },
+                    error: function () {
+                        isLoading = false;
+                    }
+                });
+            }
+
+            $(document).on('click', '#load-more', function () {
+                loadMoreCourses();
+            });
+
+            $(document).on('click', '#load-more-list', function () {
+                loadMoreCourses();
+            });
+
             $(document).on('change', '#sortBy', function () {
                 if ($(this).val() != "") {
                     location.href = '<?php echo e(url()->current()); ?>?type=' + $(this).val();
                 } else {
                     location.href = '<?php echo e(route('courses.all')); ?>';
                 }
-            })
+            });
 
             <?php if(request('type') != ""): ?>
-            $('#sortBy').find('option[value="' + "<?php echo e(request('type')); ?>" + '"]').attr('selected', true);
+            $('#sortBy').find('option[value="<?php echo e(request('type')); ?>"]').attr('selected', true);
             <?php endif; ?>
         });
     </script>

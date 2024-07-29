@@ -24,15 +24,13 @@
             color: #333333;
             background-color: white;
             border: none;
-
         }
-     .listing-filter-form select{
-            height:50px!important;
+        .listing-filter-form select {
+            height: 50px !important;
         }
 
         ul.pagination {
-            display: inline;
-            text-align: center;
+            display: none; /* Hide the default pagination */
         }
     </style>
 @endpush
@@ -92,19 +90,18 @@
                     <!-- course list -->
                     <div class="genius-post-item">
                         <div class="tab-container">
-
+<p>Choose your courses</p>
                             <!-- grid view -->
                             <div id="tab1" class="tab-content-1 pt35">
                                 <div class="best-course-area best-course-v2">
-                                    <div class="row">
+                                    <div class="row" id="course-list">
                                         @if($courses->count() > 0)
-                                            @foreach($courses as $course)
-                                                <div class="col-md-4">
-                                                    
-                                                        <div class="best-course-pic-text relative-position">
+                                            @foreach($courses->take(3) as $course)
+                                                <div class="col-md-4 course-item">
+                                                    <div class="best-course-pic-text relative-position">
                                                         <a href="{{ route('courses.show', [$course->slug]) }}" class="card-link">
                                                             <div class="best-course-pic relative-position"
-                                                                @if($course->course_image != "") style="background-image: url('{{asset('storage/uploads/'.$course->course_image)}}')" @endif></a>
+                                                                 @if($course->course_image != "") style="background-image: url('{{asset('storage/uploads/'.$course->course_image)}}')" @endif></a>
                                                                 @if($course->trending == 1)
                                                                     <div class="trend-badge-2 text-center text-uppercase">
                                                                         <i class="fas fa-bolt"></i>
@@ -174,16 +171,24 @@
                                             @endforeach
                                         @else
                                             <h3>@lang('labels.general.no_data_available')</h3>
-                                    @endif
-
-                                    <!-- /course -->
+                                        @endif
                                     </div>
+
+                                    <!-- See More Button -->
+                                    @if($courses->hasMorePages())
+                                        <div class="see-more-btn text-center mt-4">
+                                            <button class="genius-btn gradient-bg text-center text-uppercase btn-block text-white font-weight-bold" id="load-more" value="see more">
+                                                
+                                                <i class="fas fa-caret-right"></i>
+                                            </button>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
 
                             <!-- list view -->
                             <div id="tab2" class="tab-content-1">
-                                <div class="course-list-view">
+                                <div class="course-list-view col-md-3">
                                     <table>
                                         <tr class="list-head">
                                             <th>@lang('labels.frontend.course.course_name')</th>
@@ -191,13 +196,14 @@
                                             <th>@lang('labels.frontend.course.starts')</th>
                                         </tr>
                                         @if($courses->count() > 0)
-                                            @foreach($courses as $course)
-                                                <tr>
+                                            @foreach($courses->take(3) as $course)
+                                                <tr class="course-item">
                                                     <td>
                                                         <div class="course-list-img-text">
 
-                                                        <a href="{{ route('courses.show', [$course->slug]) }}" class="card-link"><div class="course-list-img" 
-                                                            @if($course->course_image != "") style="background-image: url({{asset('storage/uploads/'.$course->course_image)}})" @endif >
+                                                        <a href="{{ route('courses.show', [$course->slug]) }}" class="card-link">
+                                                            <div class="course-list-img"
+                                                                 @if($course->course_image != "") style="background-image: url({{asset('storage/uploads/'.$course->course_image)}})" @endif>
                                                             </div></a>
 
                                                             <div class="course-list-text">
@@ -210,7 +216,7 @@
                                                                             @if($course->free == 1)
                                                                                 {{trans('labels.backend.courses.fields.free')}}
                                                                             @else
-                                                                                {!! $course->strikePrice !!} 
+                                                                                {!! $course->strikePrice !!}
                                                                                 {{$appCurrency['symbol'].$course->price}}
                                                                             @endif
                                                                         </a>
@@ -248,13 +254,22 @@
                                             </tr>
                                         @endif
                                     </table>
+                                    <!-- See More Button for List View -->
+                                    @if($courses->hasMorePages())
+                                        <div class="see-more-btn text-center mt-4">
+                                            <button class="genius-btn gradient-bg text-center text-uppercase btn-block text-white font-weight-bold" id="load-more-list" type="submit" value="see more">
+                                                @lang('labels.frontend.course.see_more')
+                                                <i class="fas fa-caret-right"></i>
+                                            </button>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
 
                         </div>
 
-                        <!-- pagination -->
-                        <div class="couse-pagination text-center ul-li">
+                        <!-- pagination (hidden) -->
+                        <div class="course-pagination text-center ul-li">
                             {{ $courses->links() }}
                         </div>
                     </div>
@@ -267,7 +282,7 @@
                             <h2 class="widget-title text-capitalize">@lang('labels.frontend.course.find_your_course')</h2>
                             <div class="listing-filter-form pb30">
                                 <form action="{{route('search-course')}}" method="get">
-                                    <!-- select cateogry -->
+                                    <!-- select category -->
                                     <div class="filter-search mb20">
                                         <label class="text-uppercase">@lang('labels.frontend.course.category')</label>
                                         <select name="category" class="form-control listing-filter-form select">
@@ -377,16 +392,55 @@
 @push('after-scripts')
     <script>
         $(document).ready(function () {
+            let page = 1;
+            let isLoading = false;
+
+            function loadMoreCourses() {
+                if (isLoading) return;
+                isLoading = true;
+                page++;
+
+                $.ajax({
+                    url: '{{ url()->current() }}',
+                    type: 'GET',
+                    data: {
+                        page: page,
+                        type: $('#sortBy').val()
+                    },
+                    success: function (response) {
+                        const newCourses = $(response).find('.course-item');
+                        if (newCourses.length) {
+                            $('#course-list').append(newCourses);
+                            isLoading = false;
+                        } else {
+                            $('#load-more').hide();
+                            $('#load-more-list').hide();
+                        }
+                    },
+                    error: function () {
+                        isLoading = false;
+                    }
+                });
+            }
+
+            $(document).on('click', '#load-more', function () {
+                loadMoreCourses();
+            });
+
+            $(document).on('click', '#load-more-list', function () {
+                loadMoreCourses();
+            });
+
             $(document).on('change', '#sortBy', function () {
                 if ($(this).val() != "") {
-                    location.href = '{{url()->current()}}?type=' + $(this).val();
+                    location.href = '{{ url()->current() }}?type=' + $(this).val();
                 } else {
-                    location.href = '{{route('courses.all')}}';
+                    location.href = '{{ route('courses.all') }}';
                 }
-            })
+            });
 
             @if(request('type') != "")
-            $('#sortBy').find('option[value="' + "{{request('type')}}" + '"]').attr('selected', true);
+            $('#sortBy').find('option[value="{{ request('type') }}"]').attr('selected', true);
             @endif
         });
     </script>
